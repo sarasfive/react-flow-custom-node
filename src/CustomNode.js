@@ -1,9 +1,17 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 
-import { Handle } from 'react-flow-renderer'
+import { Handle, useUpdateNodeInternals } from 'react-flow-renderer'
 
 export default memo(({ data }) => {
+  const updateNodeInternals = useUpdateNodeInternals()
+
   const [sourceHandles, setSourceHandles] = useState([])
+
+  useEffect(() => {
+    sourceHandles.map((sourceHandle, index) => {
+      updateNodeInternals(`handle-${index}`)
+    })
+  }, [sourceHandles])
 
   return (
     <>
@@ -29,7 +37,7 @@ export default memo(({ data }) => {
             key={index}
             type="source"
             position="right"
-            id={index}
+            id={`handle-${index}`} // must be string
             style={{ top: 90 + 16 * index }}
           />
         </>
