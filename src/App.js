@@ -25,7 +25,7 @@ const App = () => {
         nodeTypes={{
           customNode: CustomNode
         }}
-      ></ReactFlow>
+      />
     </div>
   )
 }
