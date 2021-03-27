@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+import ReactFlow from 'react-flow-renderer'
+
+import CustomNode from './CustomNode'
+
+import './App.css'
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ReactFlow
+        elements={[
+          {
+            id: '1',
+            type: 'customNode',
+            data: {},
+            style: {
+              border: '1px black solid',
+              padding: 20
+            },
+            position: { x: 300, y: 50 }
+          }
+        ]}
+        nodeTypes={{
+          customNode: CustomNode
+        }}
+      ></ReactFlow>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
